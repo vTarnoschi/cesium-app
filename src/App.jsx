@@ -1,9 +1,9 @@
 import React, { memo, useEffect } from "react";
 
 import GlobalWrapper from "./style";
-import { createGlobe } from "./globe";
 import MenuOptions from "./MenuOptions";
 import SelectLanguages from "./SelectLanguages";
+import { createGlobe } from "./Utils/globe";
 
 const App = memo(() => {
   useEffect(() => {
