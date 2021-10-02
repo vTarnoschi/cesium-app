@@ -1,22 +1,22 @@
 export const urlConfigs = [
   {
     url: "http://www.celestrak.com/NORAD/elements/weather.txt",
-    color: "RED",
+    color: "BLUEVIOLET",
     name: "Weather",
   },
   {
     url: "http://www.celestrak.com/NORAD/elements/active.txt",
-    color: "RED",
+    color: "DEEPSKYBLUE",
     name: "Actives",
   },
   {
     url: "http://www.celestrak.com/NORAD/elements/science.txt",
-    color: "RED",
+    color: "GOLD",
     name: "Science",
   },
   {
     url: "http://www.celestrak.com/NORAD/elements/stations.txt",
-    color: "RED",
+    color: "HOTPINK",
     name: "Stations",
   },
   {
@@ -26,22 +26,22 @@ export const urlConfigs = [
   },
   {
     url: "http://www.celestrak.com/NORAD/elements/iridium-NEXT.txt",
-    color: "RED",
+    color: "LAWNGREEN",
     name: "IRIDIUM",
   },
   {
     url: "http://www.celestrak.com/NORAD/elements/gps-ops.txt",
-    color: "RED",
+    color: "MEDIUMBLUE",
     name: "GPS-OPS",
   },
   {
     url: "http://www.celestrak.com/NORAD/elements/ses.txt",
-    color: "RED",
+    color: "ORANGERED",
     name: "SES",
   },
   {
     url: "http://www.celestrak.com/NORAD/elements/starlink.txt",
-    color: "RED",
+    color: "WHITE",
     name: "Star Link",
   },
 ];
