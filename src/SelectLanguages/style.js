@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { configPopup } from "../mixins";
+import { configPopup } from "../Utils/mixins";
 
 const SelectLanguagesWrapper = styled.div`
   ${configPopup};

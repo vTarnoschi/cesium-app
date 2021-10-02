@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { configPopup } from "../mixins";
+import { configPopup } from "../Utils/mixins";
 
 const MenuOptionsWrapper = styled.div`
   width: 200px;
