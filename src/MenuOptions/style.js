@@ -36,6 +36,13 @@ const MenuOptionsWrapper = styled.div`
       input + span {
         margin-left: 5px;
       }
+
+      .legend {
+        margin-left: 5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+      }
     }
   }
 `;
