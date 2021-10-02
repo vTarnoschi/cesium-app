@@ -9,11 +9,11 @@ const cesiumWorkers = "../Build/Cesium/Workers";
 
 module.exports = {
   entry: {
-    app: "./src/js/index.js",
+    app: "./src/index.jsx",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].js",
+    filename: "bundle.js",
     sourcePrefix: "",
   },
   devtool: "eval",
@@ -27,9 +27,17 @@ module.exports = {
     fallback: {
       fs: false,
     },
+    extensions: [".js", ".json", ".jsx"],
   },
   module: {
     rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /nodeModules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
@@ -41,7 +49,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "src/index.html" }),
+    new HtmlWebpackPlugin({ template: "public/index.html" }),
     new MiniCssExtractPlugin(),
     new CopywebpackPlugin({
       patterns: [
