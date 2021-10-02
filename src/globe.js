@@ -66,7 +66,7 @@ export const createGlobe = () => {
     sceneModePicker: false,
   });
 
-  const url = getCorsFreeUrl(urlConfigs.starlink);
+  const url = getCorsFreeUrl(urlConfigs.debris);
 
   fetch(url).then((res) => {
     if (res.ok) {

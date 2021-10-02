@@ -2,7 +2,11 @@ import React from "react";
 import ReactDom from "react-dom";
 
 import App from "./App";
+import GlobalContextProvider from "./Context";
 
-import "./main.css";
-
-ReactDom.render(<App />, document.getElementById("root"));
+ReactDom.render(
+  <GlobalContextProvider>
+    <App />
+  </GlobalContextProvider>,
+  document.getElementById("root")
+);
