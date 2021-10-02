@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from "react";
 
-import { createGlobe } from "./globe";
+import { createGlobe } from "./Utils/globe";
 
 const App = memo(() => {
   useEffect(() => {
