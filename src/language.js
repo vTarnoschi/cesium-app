@@ -13,6 +13,7 @@ const language = {
       ses: "SES",
       starlink: "Starlink",
     },
+    loading: "Carregando",
   },
   enUS: {
     legend: "Select options",
@@ -28,6 +29,7 @@ const language = {
       ses: "SES",
       starlink: "Starlink",
     },
+    loading: "Loading",
   },
 };
 

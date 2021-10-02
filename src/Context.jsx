@@ -24,17 +24,18 @@ function removeCaracter(lang) {
 function fetchSatellite(url, viewer, color) {
   const satellitePoint = [];
 
-  fetchApi(url, null, (text) => {
-    const stations = parseTleFile(text);
+  return new Promise((resolve) => {
+    fetchApi(url, null, (text) => {
+      const stations = parseTleFile(text);
 
-    stations.forEach((station) => {
-      const point = createSatellites(station, viewer, color);
+      stations.forEach((station) => {
+        const point = createSatellites(station, viewer, color);
 
-      satellitePoint.push(point);
+        satellitePoint.push(point);
+      });
     });
+    resolve(satellitePoint);
   });
-
-  return satellitePoint;
 }
 
 const initialState = {
@@ -43,6 +44,7 @@ const initialState = {
   selectedValues: ["weather"],
   sattelites: {},
   globe: null,
+  loading: false,
 };
 
 const GlobalContextProvider = memo(({ children }) => {
@@ -80,23 +82,28 @@ const GlobalContextProvider = memo(({ children }) => {
     setLanguage(lang);
   }, [setLanguage]);
 
+  const setValues = (satellitePoint, satellite) => {
+    setState((prevState) => ({
+      ...prevState,
+      selectedValues: [...prevState.selectedValues, satellite.name],
+      sattelites: {
+        ...prevState.sattelites,
+        [satellite.name]: satellitePoint,
+      },
+      loading: false,
+    }));
+  };
+
   const onChangeSatellite = useCallback(
     (url, satellite) => {
       if (satellite.checked) {
-        const satellitePoint = fetchSatellite(
-          url,
-          state.globe,
-          satellite.color
+        setState(
+          (prevState) => ({ ...prevState, loading: true }),
+          fetchSatellite(url, state.globe, satellite.color).then(
+            (satellitePoint) =>
+              setTimeout(() => setValues(satellitePoint, satellite), 3000)
+          )
         );
-
-        setState((prevState) => ({
-          ...prevState,
-          selectedValues: [...prevState.selectedValues, satellite.name],
-          sattelites: {
-            ...prevState.sattelites,
-            [satellite.name]: satellitePoint,
-          },
-        }));
       }
 
       if (!satellite.checked) {
