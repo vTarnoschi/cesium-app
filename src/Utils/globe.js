@@ -13,7 +13,7 @@ import { urlConfigs } from "./urlsConfig";
 
 import { createSatellites } from "./satellites";
 
-export const createGlobe = () => {
+export const createGlobe = (language) => {
   const viewer = new Viewer("cesiumContainer", {
     imageryProvider: new TileMapServiceImageryProvider({
       url: buildModuleUrl("Assets/Textures/NaturalEarthII"),
@@ -26,14 +26,17 @@ export const createGlobe = () => {
     sceneModePicker: false,
   });
 
-  const config = urlConfigs[0];
+  const config = urlConfigs(language);
+  const satellitePoint = [];
 
-  fetchApi(config.url, null, (text) => {
+  fetchApi(config[0].url, null, (text) => {
     const stations = parseTleFile(text);
 
-    stations.forEach((station) =>
-      createSatellites(station, viewer, config.color)
-    );
+    stations.forEach((station) => {
+      const point = createSatellites(station, viewer, config[0].color);
+
+      satellitePoint.push(point);
+    });
   });
 
   let initialized = false;
@@ -45,5 +48,5 @@ export const createGlobe = () => {
     }
   });
 
-  return viewer;
+  return { viewer, satellitePoint };
 };

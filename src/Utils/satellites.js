@@ -42,8 +42,12 @@ export function createSatellites(station, viewer, color) {
     positionsOverTime.addSample(time, position);
   }
 
-  viewer.entities.add({
+  return viewer.entities.add({
     position: positionsOverTime,
     point: { pixelSize: 5, color: Color[color] },
   });
+}
+
+export function removeSatellites(entities, viewer) {
+  entities.forEach((entity) => viewer.entities.remove(entity));
 }
