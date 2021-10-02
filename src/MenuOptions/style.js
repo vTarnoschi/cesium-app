@@ -10,19 +10,32 @@ const MenuOptionsWrapper = styled.div`
   padding: 10px;
   ${configPopup}
 
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .minimize {
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 12px;
+      cursor: pointer;
+    }
+  }
+
   .menu-options {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-  }
-  .menu-item {
-    display: flex;
-    align-items: center;
+    .menu-item {
+      display: flex;
+      align-items: center;
 
-    color: #fff;
+      color: #fff;
 
-    input + span {
-      margin-left: 5px;
+      input + span {
+        margin-left: 5px;
+      }
     }
   }
 `;
